@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pochedex</string>
+    <string name="main_title">Your Pokemon</string>
 </resources>
