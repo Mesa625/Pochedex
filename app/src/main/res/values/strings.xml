@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Pochedex</string>
+    <string name="pokeball_button">Scan QR</string>
+    <string name="qr_code_found">Scan Pokemon</string>
+    <string name="pokemon_found">Pokemon Found</string>
+
 </resources>
