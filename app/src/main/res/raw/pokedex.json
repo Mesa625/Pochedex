@@ -1,0 +1,7 @@
+{
+  "pochemon":[
+    {"num": 1, "name": "Bulbasaur", "size": "0,7 m", "weight": "6,9 kg", "description": "There is a plant seed on its back right from the day this Pokemon is born. The seed slowly grows larger.", "attrib": ["Grass", "Poison"], "weak": ["Fire", "Psychic", "Flying", "Ice"], "evo": ["Ivysaur", "Venusaur"], "invo": []},
+    {"num": 4, "name": "Charmander", "size": "0,6 m", "weight": "8,5 kg", "description": "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.", "attrib": ["Fire"], "weak": ["Water", "Ground", "Rock"], "evo": ["Charmeleon", "Charizard"], "invo": []},
+    {"num": 7, "name": "Squirtle", "size": "0,5 m", "weight": "9,0 kg", "description": "When it retracts its long neck into its shell, it squirts out water with vigorous force.", "attrib": ["Water"], "weak": ["Grass", "Electric"], "evo": ["Wartortle", "Blastoise"], "invo": []}
+  ]
+}
