@@ -29,10 +29,24 @@ public class sharedRes {
         images.put("Squirtle", R.drawable._07_squirtle);
     }
 
+    //Sort pochemon numbers from smallest to largest
     private List<Integer> sortList(List<Integer> inputList){
-        List<Integer> sortedList = new ArrayList<Integer>();
-        for(int i = 0; i < inputList.size(); i++){
+        //Get input list
+        List<Integer> sortedList = inputList;
 
+        //Iterate through list
+        for(int i = 0; i < sortedList.size(); i++){
+            int min_index = i;
+            //Get position of smallest value so far
+            for(int j = i+1; j < sortedList.size(); j++){
+                if (sortedList.get(j) < sortedList.get(min_index)){
+                    min_index = j;
+                }
+            }
+            //Swap value in i with smallest value
+            int temp = sortedList.get(i);
+            sortedList.set(i, sortedList.get(min_index));
+            sortedList.set(min_index, temp);
         }
         return sortedList;
     }
@@ -59,6 +73,7 @@ public class sharedRes {
                 e.printStackTrace();
             }
         }
+        pocheList = sortList(pocheList);
         return pocheList;
     }
 
