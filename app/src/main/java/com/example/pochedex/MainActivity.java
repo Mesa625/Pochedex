@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -13,21 +12,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
+    //Pokemon list
     ArrayList<pochemon> myPochemon = new ArrayList<>();
-    int [] pocheImg = {R.drawable._01_bulbasaur, R.drawable._04_charmander,
-            R.drawable._07_squirtle};
-
+    //Instance shared resources
+    sharedRes shared = new sharedRes();
+    //Image list
+    Map<String, Integer> images = shared.getImages();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,49 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getMyPochemon(Context context) {
-        List<Integer> pocheList = new ArrayList<Integer>();
-        String data = "";
+        //Get captured pochemon
+        List<Integer> pocheList = shared.getPocheList(context);
 
-        //Get captured pokemon
-        InputStream inputStream = context.getResources().openRawResource(
-                R.raw.poke_list);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream));
-        String line = null;
-
-        while(true){
-            try {
-                line = reader.readLine();
-                if (line == null){
-                    break;
-                } else {
-                    //Log.d("lines", line);
-                    pocheList.add(Integer.parseInt(line));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //Get pokemon name from number
-        inputStream = context.getResources().openRawResource(
-                R.raw.pokedex);
-        reader = new BufferedReader(
-                new InputStreamReader(inputStream));
-        line = null;
-
-        while(true){
-            try {
-                line = reader.readLine();
-                if (line == null){
-                    break;
-                } else {
-                    data = data+line;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        //Get pochedex json file
+        String data = shared.getPochedex(context);
 
         if(!data.isEmpty()){
             try {
@@ -93,19 +50,28 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray pochemon = json.getJSONArray("pochemon");
                 for (int i = 0; i < pochemon.length();i++){
                     JSONObject pocheData = pochemon.getJSONObject(i);
+
                     //Get pokemon number
                     String strNum = pocheData.getString("num");
                     int number = Integer.parseInt(strNum);
+
                     //Log.d("pochemon", String.valueOf(number));
+
                     //If number matches to a captured pokemon
                     for (int j = 0; j < pocheList.size(); j++){
                         if(number == pocheList.get(j)){
                             //Get pokemon name to show in main
                             String name = pocheData.getString("name");
+
+                            //Get pokemon attributes
+                            JSONArray attributes = pocheData.getJSONArray("attrib");
+                            //Log.d("type", String.valueOf(attributes.get(0)));
+
+                            //Add pokemon to recycleView list
                             myPochemon.add(new pochemon(number, name,
                                     null, null, null,
-                                    null, null, null,
-                                    null, pocheImg[j]));
+                                    attributes, null, null,
+                                    null, images.get(name)));
                         }
                     }
                 }

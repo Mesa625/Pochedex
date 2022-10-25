@@ -1,20 +1,22 @@
 package com.example.pochedex;
 
+import org.json.JSONArray;
+
 public class pochemon {
     private int number;
     private String name;
     private String size;
     private String weight;
     private String desc;
-    private String[] attributes;
-    private String[] weaknesses;
-    private String[] evolutions;
-    private String[] involutions;
+    private JSONArray attributes;
+    private JSONArray weaknesses;
+    private JSONArray evolutions;
+    private JSONArray involutions;
     public int image;
 
     public pochemon(int number, String name, String size, String weight, String desc,
-                    String[] attributes, String[] weaknesses,
-                    String[] evolutions, String[] involutions, int image) {
+                    JSONArray attributes, JSONArray weaknesses,
+                    JSONArray evolutions, JSONArray involutions, int image) {
         this.number = number;
         this.name = name;
         this.size = size;
@@ -47,19 +49,19 @@ public class pochemon {
         return desc;
     }
 
-    public String[] getAttributes() {
+    public JSONArray getAttributes() {
         return attributes;
     }
 
-    public String[] getWeaknesses() {
+    public JSONArray getWeaknesses() {
         return weaknesses;
     }
 
-    public String[] getEvolutions() {
+    public JSONArray getEvolutions() {
         return evolutions;
     }
 
-    public String[] getInvolutions() {
+    public JSONArray getInvolutions() {
         return involutions;
     }
 

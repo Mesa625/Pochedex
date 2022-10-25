@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class poche_RecyclerViewAdapter extends RecyclerView.Adapter<poche_RecyclerViewAdapter.MyViewHolder> {
@@ -31,19 +33,27 @@ public class poche_RecyclerViewAdapter extends RecyclerView.Adapter<poche_Recycl
         return new poche_RecyclerViewAdapter.MyViewHolder(view);
     }
 
+    private void setBgdColor(pochemon pochemon, poche_RecyclerViewAdapter.MyViewHolder holder){
+        try {
+            if(String.valueOf(pochemon.getAttributes().get(0)) == "Grass"){
+                holder.rowLayout.setBackgroundResource(R.color.grass);
+            } else if (String.valueOf(pochemon.getAttributes().get(0)) == "Fire") {
+                holder.rowLayout.setBackgroundResource(R.color.fire);
+            } else if(String.valueOf(pochemon.getAttributes().get(0)) == "Water") {
+                holder.rowLayout.setBackgroundResource(R.color.water);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull poche_RecyclerViewAdapter.MyViewHolder holder, int position) {
         //Assign values to the views created in pochedex_row based on the position of recycler view
         holder.pocheNumber.setText("#" + Integer.toString(pochemon.get(position).getNumber()));
         holder.pocheName.setText(pochemon.get(position).getName());
         holder.rowImg.setImageResource(pochemon.get(position).getImage());
-        if(pochemon.get(position).getNumber() == 1){
-            holder.rowLayout.setBackgroundResource(R.color.plant);
-        } else if (pochemon.get(position).getNumber() == 4) {
-            holder.rowLayout.setBackgroundResource(R.color.fire);
-        } else if(pochemon.get(position).getNumber() == 7) {
-            holder.rowLayout.setBackgroundResource(R.color.water);
-        }
+        setBgdColor(pochemon.get(position), holder);
     }
 
     @Override
