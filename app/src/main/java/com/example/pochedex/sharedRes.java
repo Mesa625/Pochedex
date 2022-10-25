@@ -31,7 +31,9 @@ public class sharedRes {
 
     private List<Integer> sortList(List<Integer> inputList){
         List<Integer> sortedList = new ArrayList<Integer>();
+        for(int i = 0; i < inputList.size(); i++){
 
+        }
         return sortedList;
     }
 

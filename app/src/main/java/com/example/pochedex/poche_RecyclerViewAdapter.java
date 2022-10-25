@@ -1,6 +1,7 @@
 package com.example.pochedex;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,13 @@ public class poche_RecyclerViewAdapter extends RecyclerView.Adapter<poche_Recycl
 
     private void setBgdColor(pochemon pochemon, poche_RecyclerViewAdapter.MyViewHolder holder){
         try {
-            if(String.valueOf(pochemon.getAttributes().get(0)) == "Grass"){
+            String type = String.valueOf(pochemon.getAttributes().get(0));
+            //Log.d("type", type);
+            if(type.equals("Grass")){
                 holder.rowLayout.setBackgroundResource(R.color.grass);
-            } else if (String.valueOf(pochemon.getAttributes().get(0)) == "Fire") {
+            } else if (type.equals("Fire")) {
                 holder.rowLayout.setBackgroundResource(R.color.fire);
-            } else if(String.valueOf(pochemon.getAttributes().get(0)) == "Water") {
+            } else if(type.equals("Water")) {
                 holder.rowLayout.setBackgroundResource(R.color.water);
             }
         } catch (JSONException e) {
