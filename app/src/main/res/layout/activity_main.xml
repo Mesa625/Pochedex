@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Main_Window"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pokedex_background"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -22,8 +21,33 @@
         android:scaleType="fitCenter"
         android:scaleX="1"
         android:scaleY="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/pokeball4" />
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B31E1E"
+            android:text="@string/main_title"
+            android:textAlignment="center"
+            android:textColor="#FBFBFB"
+            android:textSize="48sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pocheRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E7E7F3"
+            android:scrollbars="vertical"
+            android:textAlignment="center" />
+    </LinearLayout>
 </RelativeLayout>

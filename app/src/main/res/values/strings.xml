@@ -4,4 +4,5 @@
     <string name="qr_code_found">Scan Pokemon</string>
     <string name="pokemon_found">Pokemon Found</string>
 
+    <string name="main_title">Your Pokemon</string>
 </resources>
