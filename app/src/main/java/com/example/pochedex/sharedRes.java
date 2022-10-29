@@ -24,9 +24,21 @@ public class sharedRes {
 
     //Set image list as a "dictionary"
     private void setImages() {
-        images.put("Bulbasaur", R.drawable._01_bulbasaur);
-        images.put("Charmander", R.drawable._04_charmander);
-        images.put("Squirtle", R.drawable._07_squirtle);
+        images.put("Bulbasaur", R.drawable._1_bulbasaur);
+        images.put("Ivysaur", R.drawable._2_ivysaur);
+        images.put("Venusaur", R.drawable._3_venusaur);
+        images.put("Charmander", R.drawable._4_charmander);
+        images.put("Charmeleon", R.drawable._5_charmeleon);
+        images.put("Charizard", R.drawable._6_charizard);
+        images.put("Squirtle", R.drawable._7_squirtle);
+        images.put("Wartortle", R.drawable._8_wartortle);
+        images.put("Blastoise", R.drawable._9_blastoise);
+        images.put("Pichu", R.drawable._172_pichu);
+        images.put("Pikachu", R.drawable._25_pikachu);
+        images.put("Raichu", R.drawable._26_raichu);
+        images.put("Ditto", R.drawable._132_ditto);
+        images.put("Mewtwo", R.drawable._150_mewtwo);
+        images.put("Mew", R.drawable._151_mew);
     }
 
     //Sort pochemon numbers from smallest to largest
@@ -99,5 +111,39 @@ public class sharedRes {
             }
         }
         return data;
+    }
+
+    public int getColorFromType(String type){
+        if(type.equals("Grass")){
+            return R.color.grass;
+        } else if(type.equals("Fire")){
+            return R.color.fire;
+        } else if(type.equals("Water")){
+            return R.color.water;
+        } else if(type.equals("Electric")){
+            return R.color.electric;
+        } else if(type.equals("Psychic")){
+            return R.color.psychic;
+        } else if(type.equals("Flying")){
+            return R.color.flying;
+        } else if(type.equals("Ice")){
+            return R.color.ice;
+        } else if(type.equals("Poison")){
+            return R.color.poison;
+        } else if(type.equals("Rock")){
+            return R.color.rock;
+        } else if(type.equals("Ground")){
+            return R.color.ground;
+        } else if(type.equals("Fighting")){
+            return R.color.fighting;
+        } else if(type.equals("Ghost")){
+            return R.color.ghost;
+        } else if(type.equals("Dark")){
+            return R.color.dark;
+        } else if(type.equals("Bug")){
+            return R.color.bug;
+        } else {
+            return R.color.normal;
+        }
     }
 }
