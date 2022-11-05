@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                             myPochemon.add(new pochemon(number, name,
                                     null, null, null,
                                     attributes, null, null,
-                                    null, images.get(name)));
+                                    images.get(name), 0));
                         }
                     }
                 }
