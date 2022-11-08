@@ -5,4 +5,11 @@
     <string name="pokemon_found">Pokemon Found</string>
 
     <string name="main_title">Your Pokemon</string>
+    <string name="desc_title">Description</string>
+    <string name="height_title">Height</string>
+    <string name="weight_title">Weight</string>
+    <string name="type_title">Type</string>
+    <string name="weak_title">Weaknesses</string>
+    <string name="back_desc">Return</string>
+    <string name="img_desc">Pokemon Img</string>
 </resources>

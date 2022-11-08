@@ -11,12 +11,12 @@ public class pochemon {
     private JSONArray attributes;
     private JSONArray weaknesses;
     private JSONArray evolutions;
-    private JSONArray involutions;
     public int image;
+    public int sound;
 
     public pochemon(int number, String name, String size, String weight, String desc,
                     JSONArray attributes, JSONArray weaknesses,
-                    JSONArray evolutions, JSONArray involutions, int image) {
+                    JSONArray evolutions, int image, int sound) {
         this.number = number;
         this.name = name;
         this.size = size;
@@ -25,8 +25,8 @@ public class pochemon {
         this.attributes = attributes;
         this.weaknesses = weaknesses;
         this.evolutions = evolutions;
-        this.involutions = involutions;
         this.image = image;
+        this.sound = sound;
     }
 
     public int getNumber() {
@@ -61,11 +61,11 @@ public class pochemon {
         return evolutions;
     }
 
-    public JSONArray getInvolutions() {
-        return involutions;
-    }
-
     public int getImage() {
         return image;
+    }
+
+    public int getSound() {
+        return sound;
     }
 }

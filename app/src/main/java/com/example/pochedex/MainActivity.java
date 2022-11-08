@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
     //Pokemon list
     ArrayList<pochemon> myPochemon = new ArrayList<>();
     //Instance shared resources
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.pocheRecyclerView);
         getMyPochemon(MainActivity.this);
         poche_RecyclerViewAdapter adapter = new poche_RecyclerViewAdapter(
-                this, myPochemon);
+                this, myPochemon, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             myPochemon.add(new pochemon(number, name,
                                     null, null, null,
                                     attributes, null, null,
-                                    null, images.get(name)));
+                                    images.get(name), 0));
                         }
                     }
                 }
@@ -95,5 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onItemClick(int position, String pocheNumber) {
+        Intent i = new Intent(MainActivity.this, ShowData.class);
+        i.putExtra("num", pocheNumber);
+        startActivity(i);
     }
 }
