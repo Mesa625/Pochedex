@@ -35,19 +35,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton scanButton = findViewById(R.id.PokeballButton);
-        scanButton.setOnClickListener(view -> openQR_Scan());
-    }
-
-    public void openQR_Scan(){
-        Intent scan_activity = new Intent(this, QR_Scan.class);
-        startActivity(scan_activity);
         RecyclerView recyclerView = findViewById(R.id.pocheRecyclerView);
         getMyPochemon(MainActivity.this);
         poche_RecyclerViewAdapter adapter = new poche_RecyclerViewAdapter(
                 this, myPochemon);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ImageButton scanButton = findViewById(R.id.PokeballButton);
+        scanButton.setOnClickListener(view -> openQR_Scan());
+    }
+
+    public void openQR_Scan(){
+
+        Intent scan_activity = new Intent(this, QR_Scan.class);
+        startActivity(scan_activity);
     }
 
     private void getMyPochemon(Context context) {
