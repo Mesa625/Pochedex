@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ImageButton scanButton = findViewById(R.id.PokeballButton);
-        scanButton.setOnClickListener(view -> openQR_Scan());
+        //ImageButton scanButton = findViewById(R.id.PokeballButton);
+        //scanButton.setOnClickListener(view -> openQR_Scan());
     }
 
     public void openQR_Scan(){
