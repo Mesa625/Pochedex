@@ -4,11 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 this, myPochemon, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        /*
+
         ImageButton scanButton = findViewById(R.id.PokeballButton);
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,14 +46,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 openQR_Scan();
             }
         });
-        */
+
     }
-    /*
+
     public void openQR_Scan(){
         Intent scan_activity = new Intent(this, QR_Scan.class);
         startActivity(scan_activity);
     }
-    */
+
     private void getMyPochemon(Context context) {
         //Get captured pochemon
         List<Integer> pocheList = shared.getPocheList(context);
