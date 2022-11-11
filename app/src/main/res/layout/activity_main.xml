@@ -5,16 +5,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B31E1E"
+                android:text="@string/main_title"
+                android:textAlignment="center"
+                android:textColor="#FBFBFB"
+                android:textSize="48sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/PokeballButton"
+                android:id="@+id/pocheRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#E7E7F3"
+                android:scrollbars="vertical"
+                android:textAlignment="center" />
+        </LinearLayout>
         <ImageButton
             android:id="@+id/PokeballButton"
             android:layout_width="91dp"
@@ -30,23 +50,5 @@
             android:scaleX="1"
             android:scaleY="1"
             app:srcCompat="@drawable/pokeball4" />
-
-        <TextView
-            android:id="@+id/main_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#B31E1E"
-            android:text="@string/main_title"
-            android:textAlignment="center"
-            android:textColor="#FBFBFB"
-            android:textSize="48sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/pocheRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#E7E7F3"
-            android:scrollbars="vertical"
-            android:textAlignment="center" />
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
