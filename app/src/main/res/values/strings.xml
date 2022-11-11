@@ -4,7 +4,7 @@
     <string name="qr_code_found">Scan Pokemon</string>
     <string name="pokemon_found">Pokemon Found</string>
 
-    <string name="main_title">Your Pokemon</string>
+    <string name="main_title">POCHEDEX</string>
     <string name="desc_title">Description</string>
     <string name="height_title">Height</string>
     <string name="weight_title">Weight</string>

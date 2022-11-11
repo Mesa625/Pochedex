@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     //Pokemon list
     ArrayList<pochemon> myPochemon = new ArrayList<>();
     //Instance shared resources
@@ -42,16 +42,22 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 this, myPochemon, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        //ImageButton scanButton = findViewById(R.id.PokeballButton);
-        //scanButton.setOnClickListener(view -> openQR_Scan());
+        /*
+        ImageButton scanButton = findViewById(R.id.PokeballButton);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openQR_Scan();
+            }
+        });
+        */
     }
-
+    /*
     public void openQR_Scan(){
         Intent scan_activity = new Intent(this, QR_Scan.class);
         startActivity(scan_activity);
     }
-
+    */
     private void getMyPochemon(Context context) {
         //Get captured pochemon
         List<Integer> pocheList = shared.getPocheList(context);
