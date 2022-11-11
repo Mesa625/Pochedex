@@ -32,7 +32,7 @@ public class poche_RecyclerViewAdapter extends RecyclerView.Adapter<poche_Recycl
     @NonNull
     @Override
     public poche_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //Inflate the layout (give the looks to the rows
+        //Inflate the layout (give the looks to the rows)
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.pochedex_row, parent, false);
         return new poche_RecyclerViewAdapter.MyViewHolder(view, recyclerViewInterface);

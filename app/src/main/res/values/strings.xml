@@ -12,4 +12,8 @@
     <string name="weak_title">Weaknesses</string>
     <string name="back_desc">Return</string>
     <string name="img_desc">Pokemon Img</string>
+    <string name="stats">Stats</string>
+    <string name="pokedex">Pokedex</string>
+    <string name="founded">You have found</string>
+    <string name="close">close</string>
 </resources>

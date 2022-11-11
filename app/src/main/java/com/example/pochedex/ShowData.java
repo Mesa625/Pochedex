@@ -113,6 +113,7 @@ public class ShowData extends AppCompatActivity implements View.OnClickListener{
             titleLayout.setBackgroundColor(getColor(shared.getColorFromType(String.valueOf(pochemon.getAttributes().get(0)))));
         } catch (JSONException e) {
             e.printStackTrace();
+
         }
         img.setImageResource(images.get(pochemon.getName()));
         img.setOnClickListener(this);

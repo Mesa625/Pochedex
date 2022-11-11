@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class sharedRes {
     Map<String, Integer> images = new HashMap<String, Integer>();
     Map<String, Integer> sounds = new HashMap<String, Integer>();
+
+    private static final String FILE_NAME = "poke_list.dat";
 
     public sharedRes() {
         this.setImages(); this.setSounds();
@@ -93,27 +97,31 @@ public class sharedRes {
     public List<Integer> getPocheList(Context context){
         //Get captured pokemon
         List<Integer> pocheList = new ArrayList<Integer>();
-        InputStream inputStream = context.getResources().openRawResource(
-                R.raw.poke_list);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream));
-        String line = null;
+        try {
+            FileInputStream fileInputStream = context.openFileInput(FILE_NAME);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(fileInputStream));
+            String line = null;
 
-        while(true){
-            try {
-                line = reader.readLine();
-                if (line == null){
-                    break;
-                } else {
-                    //Log.d("lines", line);
-                    pocheList.add(Integer.parseInt(line));
+            while(true){
+                try {
+                    line = reader.readLine();
+                    if (line == null){
+                        break;
+                    } else {
+                        //Log.d("lines", line);
+                        pocheList.add(Integer.parseInt(line));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            pocheList = sortList(pocheList);
+            return pocheList;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return pocheList;
         }
-        pocheList = sortList(pocheList);
-        return pocheList;
     }
 
     public String getNumber(Context context, String name){
