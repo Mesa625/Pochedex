@@ -271,6 +271,7 @@ public class QR_Scan extends AppCompatActivity{
         });
         listDex.setOnClickListener(view -> {
             Intent main_activity = new Intent(QR_Scan.this, MainActivity.class);
+            finish();
             startActivity(main_activity);
         });
         btnClose.setOnClickListener(view -> dialog.dismiss());
@@ -281,6 +282,7 @@ public class QR_Scan extends AppCompatActivity{
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onBackPressed();
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             return true;
