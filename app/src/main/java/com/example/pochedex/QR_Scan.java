@@ -156,13 +156,13 @@ public class QR_Scan extends AppCompatActivity{
             @Override
             public void onQRCodeFound(String _qrCode) {
                 qrCode = _qrCode;
-                qrCodeFoundButton.setVisibility(View.VISIBLE);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        qrCodeFoundButton.setVisibility(View.VISIBLE);
                     }
-                }, 1000);
+                }, 2000);
             }
 
             @Override
