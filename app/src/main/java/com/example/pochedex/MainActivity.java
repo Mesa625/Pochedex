@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         RecyclerView recyclerView = findViewById(R.id.pocheRecyclerView);
         getMyPochemon(MainActivity.this);
         poche_RecyclerViewAdapter adapter = new poche_RecyclerViewAdapter(
@@ -48,9 +52,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
     }
-
     public void openQR_Scan(){
         Intent scan_activity = new Intent(this, QR_Scan.class);
+
         startActivity(scan_activity);
     }
 

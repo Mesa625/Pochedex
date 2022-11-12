@@ -1,5 +1,7 @@
 package com.example.pochedex;
 
+import static com.google.android.material.internal.ContextUtils.getActivity;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
@@ -20,6 +22,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -28,6 +31,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -56,7 +60,9 @@ public class QR_Scan extends AppCompatActivity{
 
     private Button qrCodeFoundButton;
     private String qrCode;
-
+    Boolean repeated;
+    private static final String FILE_NAME = "poke_list.dat";
+    FileOutputStream fileOutputStream;
 
     //Instance shared resources
     sharedRes shared = new sharedRes();
@@ -76,7 +82,12 @@ public class QR_Scan extends AppCompatActivity{
         setContentView(R.layout.activity_qr_scan);
 
         Context context = getApplicationContext();
-
+        try {
+            fileOutputStream = openFileOutput(FILE_NAME, MODE_APPEND );
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
         previewView = findViewById(R.id.activity_main_previewView);
 
         qrCodeFoundButton = findViewById(R.id.activity_main_qrCodeFoundButton);
@@ -146,6 +157,12 @@ public class QR_Scan extends AppCompatActivity{
             public void onQRCodeFound(String _qrCode) {
                 qrCode = _qrCode;
                 qrCodeFoundButton.setVisibility(View.VISIBLE);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }, 1000);
             }
 
             @Override
@@ -157,24 +174,25 @@ public class QR_Scan extends AppCompatActivity{
         Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, imageAnalysis, preview);
     }
 
+
     public void openQR_Info(Context context){
         Integer pochemon_number = Integer.parseInt(qrCode);
         List<Integer> pocheList = shared.getPocheList(context);
-        boolean repeated = Boolean.FALSE;
+        repeated = false;
         if (pocheList.size()!=0){
             for ( int i = 0; i < pocheList.size(); i++ ) {
-                if (Objects.equals(pocheList.get(i), pochemon_number)){
-                    repeated = Boolean.TRUE;
+                if (pocheList.get(i).equals(pochemon_number)){
+                    repeated = true;
                 }
             }
         }
         if (repeated){
             Toast.makeText(getApplicationContext(), "You already have this Pokemon", Toast.LENGTH_SHORT).show();
         }else {
-            //Log.i(MainActivity.class.getSimpleName(), "QR Code Found: " + qrCode);
+            Log.i(MainActivity.class.getSimpleName(), "Pochemon Found: " + qrCode);
             capturedPochemon = getPochemon(context, pochemon_number);
-            PochemonDialog(context, capturedPochemon);
             writePochemon();
+            PochemonDialog(context, capturedPochemon);
 
         }
     }
@@ -218,34 +236,33 @@ public class QR_Scan extends AppCompatActivity{
         return new pochemon(0, null, null, null, null,
                 null, null, null, 0, 0);
     }
-
     private void writePochemon() {
         try {
-            FileOutputStream fileOutputStream = openFileOutput("poke_list.dat", MODE_PRIVATE | MODE_APPEND);
-            fileOutputStream.write(qrCode.getBytes());
+            fileOutputStream = openFileOutput(FILE_NAME, MODE_PRIVATE | MODE_APPEND);
+            fileOutputStream.write((qrCode+"\r\n").getBytes());
+            fileOutputStream.flush();
             fileOutputStream.close();
-            Toast.makeText(getApplicationContext(), "Pokemon Saved", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     private void PochemonDialog(Context context, pochemon pochemon) {
 
-        Dialog dialog = new Dialog(context);
+        Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.pochemon_dialog);
-        dialog.getWindow().setBackgroundDrawableResource(R.drawable.pokedex_background);
+        //dialog.getWindow().setBackgroundDrawableResource(R.drawable.pokedex_background);
+        Button listDex = (Button)dialog.findViewById(R.id.btn_dex);
+        Button stats = (Button)dialog.findViewById(R.id.btn_stats);
+        ImageView btnClose = (ImageView)dialog.findViewById(R.id.btn_close);
+        TextView pocheName = (TextView)dialog.findViewById(R.id.pocheName);
 
-        Button stats = dialog.findViewById(R.id.btn_stats);
-        stats.setEnabled(true);
-        Button listDex = dialog.findViewById(R.id.btn_dex);
-        listDex.setEnabled(true);
-        ImageView img = findViewById(R.id.poche_img_dialog);
-        img.setImageResource(images.get(pochemon.getName()));
-        ImageView btnClose = dialog.findViewById(R.id.btn_close);
+
+        ImageView image = (ImageView) dialog.findViewById(R.id.poche_img_dialog);
+        image.setImageResource(images.get(pochemon.getName()));
+        pocheName.setText(pochemon.getName());
 
         stats.setOnClickListener(view -> {
             Intent data_activity = new Intent(QR_Scan.this, ShowData.class);
@@ -258,5 +275,6 @@ public class QR_Scan extends AppCompatActivity{
         });
         btnClose.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
+
     }
 }
