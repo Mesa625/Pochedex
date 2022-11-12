@@ -2,25 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="410dp"
-    android:layout_height="355dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/root_vg"
     android:background="@color/black"
     >
+    <LinearLayout
+        android:id="@+id/linear_upper"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <ImageView
+        android:src="@drawable/pokedex_background"
+        android:scaleType="fitXY"
+        android:layout_width="275dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/relative_dialog_main"
+        android:layout_alignTop="@+id/relative_dialog_main"
+        />
+    <!--<LinearLayout
+        android:id="@+id/linear_left"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_alignBottom="@+id/linear_bottom"
+        android:layout_alignBottom="@+id/linear_bottom">
+    </LinearLayout>-->
     <RelativeLayout
-        android:layout_width="397dp"
+        android:id="@+id/relative_dialog_main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-        <ImageView
-            android:src="@drawable/pokedex_background"
-            android:scaleType="fitXY"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignTop="@+id/linear_dialog_main"
-            android:layout_alignBottom="@id/linear_dialog_main"
-            android:layout_alignLeft="@id/linear_dialog_main"
-            android:layout_alignRight="@id/linear_dialog_main" />
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/linear_upper">
         <View
             android:layout_width="40dp"
             android:layout_height="60dp"
@@ -50,7 +67,6 @@
                 android:elevation="8dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"/>
-
             <TextView
                 android:id="@+id/txttite"
                 android:layout_width="wrap_content"
@@ -62,18 +78,17 @@
 
             <TextView
                 android:id="@+id/pocheName"
-                android:layout_width="wrap_content"
+                android:layout_width="195dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center_horizontal"
-                android:text="Bulbasaur"
-                android:textStyle="bold|italic"
-                android:textColor="@color/black"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textSize="30sp"/>
-
+                android:text="Bulbasaur"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,6 +120,14 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linear_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/relative_dialog_main">
+    </LinearLayout>
+
 
 
 </RelativeLayout>

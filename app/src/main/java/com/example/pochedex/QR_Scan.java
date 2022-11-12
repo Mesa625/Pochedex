@@ -253,7 +253,6 @@ public class QR_Scan extends AppCompatActivity{
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.pochemon_dialog);
-        //dialog.getWindow().setBackgroundDrawableResource(R.drawable.pokedex_background);
         Button listDex = (Button)dialog.findViewById(R.id.btn_dex);
         Button stats = (Button)dialog.findViewById(R.id.btn_stats);
         ImageView btnClose = (ImageView)dialog.findViewById(R.id.btn_close);
