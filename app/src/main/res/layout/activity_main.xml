@@ -34,11 +34,11 @@
 
         <ImageButton
             android:id="@+id/PokeballButton"
-            android:layout_width="91dp"
+            android:layout_width="80dp"
             android:layout_height="77dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="31dp"
             android:adjustViewBounds="true"
             android:background="@null"

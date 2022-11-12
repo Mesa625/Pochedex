@@ -2,14 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="410dp"
+    android:layout_height="355dp"
     android:id="@+id/root_vg"
+    android:background="@color/black"
     >
-
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="397dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
         <ImageView
             android:src="@drawable/pokedex_background"
             android:scaleType="fitXY"
@@ -66,10 +68,11 @@
                 android:fontFamily="@font/open_sans"
                 android:gravity="center_horizontal"
                 android:text="Bulbasaur"
+                android:textStyle="bold|italic"
                 android:textColor="@color/black"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textSize="20sp"/>
+                android:textSize="30sp"/>
 
 
             <LinearLayout
@@ -102,5 +105,6 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+
 
 </RelativeLayout>
