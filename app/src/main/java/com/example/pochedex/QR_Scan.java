@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.util.Size;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -275,5 +276,15 @@ public class QR_Scan extends AppCompatActivity{
         btnClose.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

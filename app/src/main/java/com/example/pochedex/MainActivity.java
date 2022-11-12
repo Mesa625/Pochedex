@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
     }
+
     public void openQR_Scan(){
         Intent scan_activity = new Intent(this, QR_Scan.class);
 
